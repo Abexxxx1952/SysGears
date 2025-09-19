@@ -1,5 +1,6 @@
 import { checkInput } from "./checkInput.js";
 import { loadUnitsFromFile } from "./loadUnitsFromFile.js";
+import { testCases } from "./testCases.js";
 
 export async function convertDistance(input) {
   const checkedInput = checkInput(input);
@@ -23,10 +24,6 @@ export async function convertDistance(input) {
     value: convertedValue,
   };
 }
-
-const testCases = [
-  // Your tests here...
-];
 
 try {
   const promises = testCases.map((testCase) =>
