@@ -23,13 +23,11 @@ export const include = {
     return true;
   },
   modifyDataFunction: function (data, conditionValue) {
-    return [
-      ...data.filter((item) =>
-        conditionValue.some((condition) =>
-          Object.keys(condition).every((key) => item[key] === condition[key])
-        )
-      ),
-    ];
+    return [...data].filter((item) =>
+      conditionValue.some((condition) =>
+        Object.keys(condition).every((key) => item[key] === condition[key])
+      )
+    );
   },
   priority: 1,
 };

@@ -14,11 +14,22 @@ export const sortBy = {
     return true;
   },
   modifyDataFunction: function (data, conditionValue) {
-    return [
-      ...data.sort((a, b) => {
-        a[conditionValue[0]] - b[conditionValue[0]];
-      }),
-    ];
+    return [...data].sort((a, b) => {
+      const key = conditionValue[0];
+      const valA = a[key];
+      const valB = b[key];
+
+      if (typeof valA === "number" && typeof valB === "number") {
+        return valA - valB;
+      }
+
+      const strA = String(valA);
+      const strB = String(valB);
+
+      if (strA < strB) return -1;
+      if (strA > strB) return 1;
+      return 0;
+    });
   },
   priority: 2,
 };

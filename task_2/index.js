@@ -45,30 +45,30 @@ try {
   testCases.forEach((testCase, index) => {
     try {
       const result = filterAndSelect(testCase[0], testCase[1]);
-      console.log(`✅ Test ${index + 1} PASSED`);
+      console.log(`Test ${index + 1} PASSED`);
       console.log(`Input:`, JSON.stringify(testCase[0]));
       console.log(`Condition:`, JSON.stringify(testCase[1]));
-      console.log(`Output:`, JSON.stringify(result.result));
+      console.log(`Output:`, JSON.stringify(result));
 
       if (testCase[2] !== undefined) {
         const isMatch =
           JSON.stringify(result.result) === JSON.stringify(testCase[2]);
         console.log(`Expected match: ${isMatch}`);
         if (!isMatch) {
-          console.warn(`⚠️ Expected:`, testCase[2]);
-          console.warn(`⚠️ Got:`, result.result);
+          console.warn(`Expected:`, testCase[2]);
+          console.warn(`Got:`, result);
         }
       }
       console.log("---");
     } catch (err) {
-      console.error(`❌ Test ${index + 1} FAILED:`, err.message);
+      console.error(`Test ${index + 1} FAILED:`, err.message);
       console.error(`Input:`, JSON.stringify(testCase[0]));
       console.error(`Condition:`, JSON.stringify(testCase[1]));
       console.log("---");
     }
   });
 
-  console.log("✅ All tests done");
+  console.log("All tests done");
 } catch (err) {
-  console.error("🚨 Global error:", err.message);
+  console.error("Global error:", err.message);
 }
