@@ -3,12 +3,14 @@ import { Questionnaire } from "./questionnaire.js";
 function main() {
   const questionnaire = new Questionnaire(questions);
   /*  ---- Generate an arbitrary branch and output to the console ---- */
-  questionnaire.start();
+  /*   questionnaire.start();
   for (const [question, answer] of questionnaire.getAnswers()) {
     console.log(`${question}: ${answer}`);
-  }
+  } */
 
   /*  ---- Generate all possible branches  ---- */
+
+  console.dir(questionnaire.getBranches(), { depth: null, colors: true });
   return questionnaire.getBranches();
 }
 

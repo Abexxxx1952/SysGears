@@ -67,27 +67,20 @@ export class Questionnaire {
           nextNode = node.relatedQuestions.get(answer);
         }
 
-        if (node.requiredQuestion) {
+        if (nextNode) {
+          traverse(nextNode, newBranch);
+        } else if (node.requiredQuestion) {
           const requiredNode = node.requiredQuestion;
-          const requiredAnswers = requiredNode.answers;
-
-          for (const requiredAnswer of requiredAnswers) {
+          for (const requiredAnswer of requiredNode.answers) {
             const branchWithRequired = [
               ...newBranch,
               { [requiredNode.question]: requiredAnswer },
             ];
-
-            if (nextNode) {
-              traverse(nextNode, branchWithRequired);
-            }
             branches.push(branchWithRequired);
           }
+        } else {
+          branches.push(newBranch);
         }
-
-        if (nextNode) {
-          traverse(nextNode, newBranch);
-        }
-        branches.push(newBranch);
       }
     };
 
