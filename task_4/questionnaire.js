@@ -69,7 +69,9 @@ export class Questionnaire {
 
         if (nextNode) {
           traverse(nextNode, newBranch);
-        } else if (node.requiredQuestion) {
+          continue;
+        }
+        if (node.requiredQuestion) {
           const requiredNode = node.requiredQuestion;
           for (const requiredAnswer of requiredNode.answers) {
             const branchWithRequired = [
@@ -78,9 +80,9 @@ export class Questionnaire {
             ];
             branches.push(branchWithRequired);
           }
-        } else {
-          branches.push(newBranch);
+          continue;
         }
+        branches.push(newBranch);
       }
     };
 
